@@ -1,11 +1,26 @@
 import React from "react";
+import GlobalStyle from "./styles/GlobalStyle";
+import MainContent from "./components/common/MainContent";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "./styles/theme";
+import { Home } from "./pages/Home";
+
+const StyledApp = styled.div`
+	text-align: center;
+	background-color: ${({ theme }) => theme.colors.secondary};
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+`;
 
 function App() {
 	return (
-		<div>
-			<h1>AI Treasure Hunt</h1>
-			<p>Your treasure hunt generator with Mastra!</p>
-		</div>
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<StyledApp>
+				<Home />
+			</StyledApp>
+		</ThemeProvider>
 	);
 }
 
